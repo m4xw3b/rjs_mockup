@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <!-- NAVEGAÇÃO PRINCIPAL (ESTILO PORTAL) -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-navigation">
         <div class="container">
             <ul class="nav-links">
@@ -41,14 +41,24 @@
         </div>
     </nav>
 
+    <!-- TICKER WINTECH (Últimas Notícias de Tecnologia) -->
+    <div class="ticker-wrap">
+        <div class="ticker-label"><i class="fas fa-microchip"></i> TECNOLOGIA</div>
+        <div class="ticker-content">
+            <div class="ticker" id="wintech-ticker">
+                A carregar as últimas notícias de tecnologia...
+            </div>
+        </div>
+    </div>
+
     <!-- VISTA: INÍCIO -->
     <main id="view-home" class="view-section active">
         
-        <!-- HERO BANNER DINÂMICO -->
+        <!-- HERO BANNER -->
         <section class="hero-showcase container">
             <div class="hero-content">
                 <h2>A Voz e a Notícia da Nossa Região</h2>
-                <p>Acompanhe a emissão local em 88.6 FM. A melhor música, informação ao minuto e toda a atualidade do distrito de Setúbal.</p>
+                <p>Acompanhe a emissão local em 88.6 FM. A melhor música, informação ao minuto e toda a atualidade.</p>
                 <a href="#noticias" class="btn-primary">Ver Destaques <i class="fas fa-arrow-down"></i></a>
             </div>
         </section>
@@ -58,18 +68,18 @@
             <div class="main-content">
                 
                 <div class="section-header">
-                    <h3><i class="fas fa-bolt"></i> Última Hora: Região</h3>
+                    <h3><i class="fas fa-bolt"></i> Última Hora: RTP Notícias</h3>
                 </div>
-                <!-- Grelha de Imagens (O Setubalense) -->
-                <div class="dynamic-grid" id="regional-news">
-                    <div class="loading-state"><i class="fas fa-circle-notch fa-spin"></i> A carregar portal de notícias...</div>
+                <!-- Lista de Notícias em Bloco (RTP) -->
+                <div class="text-news-list" id="rtp-news">
+                    <div class="loading-state"><i class="fas fa-circle-notch fa-spin"></i> A carregar notícias da RTP...</div>
                 </div>
 
                 <div class="section-header" style="margin-top: 40px;">
                     <h3><i class="fas fa-laptop-code"></i> Destaques Wintech</h3>
                 </div>
-                <!-- Grelha de Imagens (Wintech) -->
-                <div class="dynamic-grid" id="wintech-news">
+                <!-- Lista de Notícias em Bloco (Wintech) -->
+                <div class="text-news-list" id="wintech-news">
                     <div class="loading-state"><i class="fas fa-circle-notch fa-spin"></i> A carregar atualidade tecnológica...</div>
                 </div>
 
@@ -81,7 +91,7 @@
                 <div class="sidebar-widget">
                     <h4 class="widget-title">Câmara Municipal</h4>
                     <div id="setubal-news" class="sidebar-news-list">
-                        <div class="loading-state"><i class="fas fa-spinner fa-spin"></i> A carregar...</div>
+                        <div class="loading-state"><i class="fas fa-spinner fa-spin"></i> A carregar destaques locais...</div>
                     </div>
                 </div>
 
