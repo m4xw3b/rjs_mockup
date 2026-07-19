@@ -9,101 +9,112 @@
 </head>
 <body>
 
-    <div class="site-wrapper">
-        <!-- CABEÇALHO -->
-        <header class="main-header">
-            <div class="header-content">
-                <div class="logo-area">
-                    <i class="fas fa-chart-bar" style="font-size: 2rem; margin-bottom: 5px;"></i><br>
-                    <h1>RÁDIO JORNAL</h1>
-                    <h2>DE SETÚBAL 88.6 FM</h2>
-                </div>
-                
-                <!-- CAIXA LISTEN LIVE -->
-                <div class="listen-live-box">
-                    <div class="icon-headphone">
-                        <i class="fas fa-headphones-alt"></i>
-                    </div>
-                    <div class="listen-info">
-                        <button class="play-btn" id="playBtn" onclick="togglePlay()">
-                            <i class="fas fa-play" id="playIcon"></i> OUVIR EM DIRETO
-                        </button>
-                        <p>No ar: Emissão Local 88.6 FM</p>
-                        <audio id="audioStream" src="https://sp0.redeaudio.com/8178/stream" preload="none"></audio>
-                    </div>
-                </div>
+    <!-- BARRA SUPERIOR ESCURA (PLAYER) -->
+    <div class="top-player-bar">
+        <div class="container player-flex">
+            <div class="logo-area">
+                <i class="fas fa-broadcast-tower"></i> RÁDIO JORNAL <span>88.6 FM</span>
             </div>
-        </header>
+            
+            <div class="player-controls">
+                <div class="live-indicator"><span class="pulse"></span> EM DIRETO</div>
+                <button class="btn-play" id="playBtn" onclick="togglePlay()">
+                    <i class="fas fa-play" id="playIcon"></i> OUVIR AGORA
+                </button>
+                <div class="volume-slider">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
+                </div>
+                <audio id="audioStream" src="https://sp0.redeaudio.com/8178/stream" preload="none"></audio>
+            </div>
+        </div>
+    </div>
 
-        <!-- MENU DE NAVEGAÇÃO ESCURO -->
-        <nav class="main-nav">
-            <a href="#" onclick="showView('home')">PÁGINA INICIAL</a>
-            <a href="#" onclick="showView('estatuto')">ESTATUTO EDITORIAL</a>
-            <a href="#" onclick="showView('contactos')">CONTACTOS</a>
-        </nav>
+    <!-- NAVEGAÇÃO PRINCIPAL (ESTILO PORTAL) -->
+    <nav class="main-navigation">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="showView('home', this)">Página Inicial</a></li>
+                <li><a href="#" onclick="showView('estatuto', this)">Estatuto Editorial</a></li>
+                <li><a href="#" onclick="showView('contactos', this)">Contactos</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="content-area">
-            <!-- VISTA: INÍCIO -->
-            <main id="view-home" class="view-section active">
+    <!-- VISTA: INÍCIO -->
+    <main id="view-home" class="view-section active">
+        
+        <!-- HERO BANNER DINÂMICO -->
+        <section class="hero-showcase container">
+            <div class="hero-content">
+                <h2>A Voz e a Notícia da Nossa Região</h2>
+                <p>Acompanhe a emissão local em 88.6 FM. A melhor música, informação ao minuto e toda a atualidade do distrito de Setúbal.</p>
+                <a href="#noticias" class="btn-primary">Ver Destaques <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </section>
+
+        <div class="container layout-grid" id="noticias">
+            <!-- ÁREA PRINCIPAL (ESQUERDA) -->
+            <div class="main-content">
                 
-                <!-- SECÇÃO: NOTÍCIAS PRINCIPAIS -->
-                <div class="section-block">
-                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Notícias e Destaques</h3>
+                <div class="section-header">
+                    <h3><i class="fas fa-bolt"></i> Última Hora: Região</h3>
+                </div>
+                <!-- Grelha de Imagens (O Setubalense) -->
+                <div class="dynamic-grid" id="regional-news">
+                    <div class="loading-state"><i class="fas fa-circle-notch fa-spin"></i> A carregar portal de notícias...</div>
+                </div>
+
+                <div class="section-header" style="margin-top: 40px;">
+                    <h3><i class="fas fa-laptop-code"></i> Destaques Wintech</h3>
+                </div>
+                <!-- Grelha de Imagens (Wintech) -->
+                <div class="dynamic-grid" id="wintech-news">
+                    <div class="loading-state"><i class="fas fa-circle-notch fa-spin"></i> A carregar atualidade tecnológica...</div>
+                </div>
+
+            </div>
+
+            <!-- BARRA LATERAL (DIREITA) -->
+            <aside class="sidebar">
+                
+                <div class="sidebar-widget">
+                    <h4 class="widget-title">Câmara Municipal</h4>
+                    <div id="setubal-news" class="sidebar-news-list">
+                        <div class="loading-state"><i class="fas fa-spinner fa-spin"></i> A carregar...</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget ad-widget">
+                    <span class="ad-label">Publicidade</span>
+                    <div class="ad-space-300">
+                        Espaço<br>300x250
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- VISTA: ESTATUTO EDITORIAL -->
+    <main id="view-estatuto" class="view-section">
+        <div class="container">
+            <div class="internal-page">
+                <div class="section-header">
+                    <h3><i class="fas fa-file-signature"></i> Estatuto Editorial</h3>
+                </div>
+                
+                <div class="text-document">
+                    <div class="doc-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pra%C3%A7a_de_Bocage_%28Set%C3%BAbal%29.jpg/800px-Pra%C3%A7a_de_Bocage_%28Set%C3%BAbal%29.jpg" alt="Setúbal" class="doc-bg">
+                        <div class="doc-header-text">
+                            <h4>Rádio Jornal de Setúbal, Soc. de Comunicação, Lda</h4>
+                            <p>Av. Dr. António Rodrigues Manito, 58 R/C - A 2901-902 Setúbal | NIF 503054941</p>
+                        </div>
+                    </div>
                     
-                    <div class="news-grid-2col">
-                        <!-- Coluna 1: O Setubalense -->
-                        <div class="news-column">
-                            <h4 class="col-title">Atualidade Regional</h4>
-                            <div id="regional-news" class="news-list">
-                                <p class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar notícias...</p>
-                            </div>
-                        </div>
-
-                        <!-- Coluna 2: Wintech -->
-                        <div class="news-column">
-                            <h4 class="col-title">Tecnologia (Wintech)</h4>
-                            <div id="wintech-news" class="news-list">
-                                <p class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar notícias...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SECÇÃO: MUNICÍPIO & PUBLICIDADE -->
-                <div class="section-block">
-                    <div class="news-grid-2col">
-                        <div class="news-column">
-                            <h3 class="section-title"><i class="fas fa-bullseye"></i> Município de Setúbal</h3>
-                            <div id="setubal-news" class="news-list">
-                                <p class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar destaques...</p>
-                            </div>
-                        </div>
-                        
-                        <div class="news-column">
-                            <h3 class="section-title"><i class="fas fa-bullseye"></i> Espaço Publicitário</h3>
-                            <div class="ad-box">
-                                Publicidade<br>300x250
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <!-- VISTA: ESTATUTO EDITORIAL -->
-            <main id="view-estatuto" class="view-section">
-                <div class="section-block">
-                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Estatuto Editorial</h3>
-                    <div class="text-content">
-                        <div class="info-header">
-                            <strong>Rádio Jornal de Setúbal</strong><br>
-                            Av. Dr. António Rodrigues Manito, 58 R/C - A 2901-902 Setúbal<br>
-                            Telefone: 265 573 601 | Fax: 265 573 639 | NIF 503054941<br>
-                            E-mail: gabinete.advogados326@gmail.com
-                        </div>
-                        <br>
-                        <h4>ESTATUTO EDITORIAL DA RÁDIO JORNAL DE SETÚBAL, SOC. DE COMUNICAÇÃO, LDA</h4>
-                        <br>
-                        <ol class="ordered-list">
+                    <div class="doc-body">
+                        <ol>
                             <li>A Rádio Jornal de Setúbal, é uma Estação Privada de Radiodifusão de âmbito Local, que tem como referências os princípios da Liberdade, Isenção e Pluralismo.</li>
                             <li>A frequência é 88.6 fm, o tipo generalista e a àrea de cobertura é Setúbal.</li>
                             <li>Previlegia a Informação Local e Regional, não descurando os grandes acontecimentos Nacionais e Internacionais. O Conteúdo da Informação e Programação respeita, escrupulosamente, o rigor e a máxima objectividade, numa inequívoca subordinação à deontologia da Comunicação Social.</li>
@@ -120,45 +131,56 @@
                             <li>A Rádio Jornal de Setúbal respeita os direitos dos ouvintes, a ética profissional e os princípios deontológicos dos jornalistas.</li>
                         </ol>
                         
-                        <div class="signatures">
-                            <div><strong>O responsável de Programação</strong><br>Luís Gabriel Santos</div>
-                            <div><strong>A responsável de informação</strong><br>Ana Paula Antunes</div>
+                        <div class="doc-signatures">
+                            <div class="sign-box"><span>O responsável de Programação</span><br>Luís Gabriel Santos</div>
+                            <div class="sign-box"><span>A responsável de Informação</span><br>Ana Paula Antunes</div>
                         </div>
                     </div>
                 </div>
-            </main>
-
-            <!-- VISTA: CONTACTOS -->
-            <main id="view-contactos" class="view-section">
-                <div class="section-block">
-                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Contactos Oficiais</h3>
-                    <div class="text-content contact-layout">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <h4>Centro de Produção</h4>
-                            <p>Av. Dr. António Rodrigues Manito, Nº 58 – R/C A<br>2900-061 Setúbal</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <h4>Telefones</h4>
-                            <p>Geral: (+351) 265 119 947 <small>(custo chamada p/rede fixa nacional)</small></p>
-                            <p>Comercial: (+351) 911 940 292 <small>(custo chamada p/rede móvel nacional)</small></p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <h4>Email</h4>
-                            <p>gabinete.advogados326@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-            </main>
+            </div>
         </div>
-        
-        <footer class="site-footer">
-            <p>Rádio Jornal de Setúbal © 2026 | Geral: 265 119 947</p>
-        </footer>
-    </div>
+    </main>
+
+    <!-- VISTA: CONTACTOS -->
+    <main id="view-contactos" class="view-section">
+        <div class="container">
+            <div class="internal-page">
+                <div class="section-header">
+                    <h3><i class="fas fa-address-book"></i> Fale Connosco</h3>
+                </div>
+                
+                <div class="contact-cards-wrapper">
+                    <div class="dark-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Centro de Produção</h4>
+                        <p>Av. Dr. António Rodrigues Manito<br>Nº 58 – R/C A<br>2900-061 Setúbal</p>
+                    </div>
+                    <div class="dark-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Telefones</h4>
+                        <p><strong>Geral:</strong> (+351) 265 119 947<br><span>(custo chamada p/rede fixa nacional)</span></p>
+                        <p class="mt-10"><strong>Comercial:</strong> (+351) 911 940 292<br><span>(custo chamada p/rede móvel nacional)</span></p>
+                    </div>
+                    <div class="dark-card">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h4>Email Eletrónico</h4>
+                        <p>gabinete.advogados326@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Rádio Jornal de Setúbal. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>
-</html> 
+</html>
