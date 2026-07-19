@@ -112,4 +112,4 @@ body { background-color: var(--bg-color); color: var(--text-main); line-height: 
     .header-content { flex-direction: column; text-align: center; gap: 20px; }
     .news-grid-2col, .contact-layout { flex-direction: column; }
     .listen-live-box { justify-content: center; width: 100%; }
-}
+} 
