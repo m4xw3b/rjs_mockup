@@ -23,11 +23,11 @@ nav a { color: white; text-decoration: none; font-weight: 500; transition: color
 nav a:hover { color: var(--secondary); }
 .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-/* Ticker de Notícias (Scroll Horizontal Contínuo) */
+/* Ticker de Notícias - Agora mais lento (80s em vez de 35s) */
 .ticker-wrap { display: flex; background: var(--primary); color: white; height: 40px; align-items: center; border-bottom: 2px solid var(--secondary); }
 .ticker-label { background: var(--secondary); padding: 0 15px; font-weight: bold; height: 100%; display: flex; align-items: center; z-index: 2; white-space: nowrap; box-shadow: 2px 0 5px rgba(0,0,0,0.2); text-transform: uppercase; font-size: 0.9rem; }
 .ticker-content { flex: 1; overflow: hidden; position: relative; height: 100%; }
-.ticker { white-space: nowrap; position: absolute; line-height: 40px; animation: ticker-scroll 35s linear infinite; }
+.ticker { white-space: nowrap; position: absolute; line-height: 40px; animation: ticker-scroll 80s linear infinite; }
 .ticker:hover { animation-play-state: paused; }
 .ticker-item { margin-right: 40px; display: inline-block; }
 .ticker-item a { color: white; text-decoration: none; transition: opacity 0.3s; }
@@ -39,8 +39,13 @@ nav a:hover { color: var(--secondary); }
 .view-section.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Hero */
-.hero { background: linear-gradient(rgba(18,18,18,0.8), rgba(0, 77, 153, 0.85)), url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; color: white; text-align: center; padding: 50px 20px; }
+/* Hero - Fundo alterado para a Praça de Bocage */
+.hero { 
+    background: linear-gradient(rgba(18,18,18,0.85), rgba(0, 77, 153, 0.9)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pra%C3%A7a_de_Bocage_%28Set%C3%BAbal%29.jpg/1920px-Pra%C3%A7a_de_Bocage_%28Set%C3%BAbal%29.jpg') center/cover no-repeat; 
+    color: white; 
+    text-align: center; 
+    padding: 70px 20px; 
+}
 .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
 .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
 
@@ -105,7 +110,7 @@ input[type="range"] { accent-color: var(--secondary); width: 80px; }
 /* Responsive */
 @media (max-width: 768px) {
     .ticker-label { font-size: 0.7rem; padding: 0 10px; }
-    .news-card { flex: 0 0 260px; } /* Cartões menores em mobile */
+    .news-card { flex: 0 0 260px; }
     .mobile-menu-btn { display: block; }
     nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--dark); flex-direction: column; padding: 20px; gap: 15px; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
     nav.show { display: flex; }
