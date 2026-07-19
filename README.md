@@ -1,16 +1,67 @@
-# Portal Rádio Jornal de Setúbal - Mockup SPA Dinâmico
+# 📻 Rádio Jornal de Setúbal - 88.6 FM (Web Portal)
 
-**Resumo:** Mockup moderno em Dark Mode para a Rádio Jornal de Setúbal, com leitor persistente, grelhas dinâmicas e integração de feeds RSS regionais e de tecnologia.
+Este repositório contém o código-fonte do novo portal web da **Rádio Jornal de Setúbal (88.6 FM)**. O projeto foi totalmente redesenhado para oferecer uma experiência moderna, rápida e focada no utilizador, operando como uma *Single Page Application* (SPA) com um *Dark Theme* nativo.
 
-Este projeto consiste no desenvolvimento de um mockup conceptual para o portal digital da Rádio Jornal de Setúbal. O objetivo foi criar uma plataforma moderna, dinâmica e visualmente apelativa, afastando-se de um design estritamente institucional para adotar a linguagem contemporânea dos grandes portais de informação e entretenimento. A nova interface utiliza um "dark mode" elegante, focado em imagens de grande impacto e numa forte componente multimédia.
+## 🔄 Evolução Visual
 
-A arquitetura do site foi construída sob o modelo de Single Page Application (SPA), garantindo uma experiência de navegação fluida e imersiva. Através de HTML5, CSS3 e JavaScript puro, o utilizador pode transitar entre a página inicial, o estatuto editorial e os contactos de forma instantânea. Esta abordagem técnica elimina a necessidade de recarregar a página a cada clique, garantindo um ambiente ágil e otimizado para o consumo de conteúdos.
+### Versão Anterior
+*Abaixo encontra-se o registo visual da interface anterior do portal:*
 
-Uma das pedras basilares deste projeto é a integração de um leitor de áudio integrado e ancorado no topo da página. Esta barra de reprodução permite aos visitantes ouvir a emissão em direto (88.6 FM) enquanto exploram todo o restante conteúdo do portal. A natureza SPA da plataforma garante que a música e a informação áudio nunca são interrompidas durante a navegação, replicando com eficácia o comportamento de aplicações nativas.
+> **Nota:** Substituir este texto e a imagem abaixo pelo link da fotografia da versão antiga.
+![Versão Anterior da Rádio](link_para_a_imagem_antiga.jpg)
 
-Para garantir que o portal se mantém sempre atualizado e relevante, foi implementado um sistema automatizado de consumo de feeds RSS, sem necessidade de bases de dados locais. Através da API pública rss2json, o site puxa de forma assíncrona as notícias mais recentes do jornal O Setubalense, os destaques da Câmara Municipal de Setúbal e a atualidade tecnológica da Wintech. O JavaScript incluído analisa de forma inteligente cada artigo para extrair imagens e apresentar a informação em grelhas dinâmicas de alto contraste.
+### Nova Versão (Atual)
+*O novo design otimizado, com foco em leitura noturna, dinamismo visual e integração fluida de conteúdos em tempo real:*
 
-Totalmente responsivo e adaptável a qualquer dispositivo móvel ou ecrã de grandes dimensões, este projeto está preparado para alojamento imediato em ambientes estáticos como o GitHub Pages. A ausência de dependências de backend simplifica a manutenção e aumenta a segurança. Trata-se de uma montra tecnológica que une a tradição da rádio local à vanguarda do web design moderno, desenhado para envolver e informar toda a comunidade setubalense.
+> **Nota:** Substituir este texto e a imagem abaixo pelo link da fotografia da nova versão.
+![Nova Versão da Rádio Jornal](link_para_a_imagem_nova.jpg)
 
-**Tags:**
-`#HTML5`, `#CSS3`, `#JavaScript`, `#RadioOnline`, `#Setubal`, `#WebDesign`, `#DarkTheme`, `#RSSFeeds`, `#SPA`, `#UI`
+---
+
+## 🚀 Arquitetura e Blocos Funcionais
+
+O portal foi construído utilizando **HTML5, CSS3 puro (Flexbox/Grid)** e **Vanilla JavaScript**, sem dependências de frameworks pesadas, garantindo um carregamento ultrarrápido. Abaixo detalhamos os principais módulos da aplicação:
+
+### 1. 🎵 Top Player Fixo com Visualizador de Áudio
+Uma barra superior que acompanha a navegação do utilizador (*sticky header*). Integra um reprodutor de áudio HTML5 diretamente ligado à stream ao vivo da rádio.
+* **Ondas Sonoras Animadas:** Através de CSS puro, ativamos uma animação de equalizador sincronizada com o botão de "Play", dando resposta visual imediata de que a rádio está em emissão.
+* **Controlo de Volume:** Integrado nativamente sem necessidade de popups adicionais.
+
+### 2. ⚡ Ticker Contínuo de Tecnologia
+Uma faixa dinâmica em *scroll* infinito dedicada à tecnologia.
+* Alimentado pelo feed RSS do portal **Wintech**, carrega os últimos destaques tecnológicos de forma autónoma e contínua no topo da página.
+
+### 3. 📰 Motor de Feeds RSS Externos (Notícias e Desporto)
+Para manter o site sempre vivo sem necessidade de gestão manual de conteúdos, desenvolvemos um motor assíncrono em JavaScript (utilizando a API `rss2json`) que compila e limpa notícias de fontes oficiais:
+* **Últimas Notícias:** Bloco de "Última Hora" ligado ao Notícias ao Minuto, formatado para apresentar a hora exata da publicação.
+* **Desporto:** Alimentado pela RTP Desporto.
+* **Notícias do Município:** Destaques locais extraídos diretamente do feed oficial da Câmara Municipal de Setúbal, alocados na barra lateral.
+
+### 4. 🖼️ "Imagem do Dia" Dinâmica (Rotativa)
+Um módulo visual que sorteia e apresenta aleatoriamente fotografias em alta resolução da região (Parque Natural da Arrábida, Portinho, etc.) sempre que a página é carregada.
+* O sistema atribui automaticamente os créditos da imagem (ex: "por Pexels" ou "por iStock") e a respetiva legenda consoante a fotografia sorteada no momento.
+
+### 5. 📱 Modal / Popup de Leitura Integrado
+Para evitar que o ouvinte saia do portal (o que cortaria a emissão da rádio), todo o sistema de notícias funciona com *Modals*. 
+* Ao clicar num destaque, abre-se um cartão escuro central em sobreposição com o resumo limpo da notícia e a hiperligação para o site oficial da fonte, mantendo o áudio intacto em *background*.
+
+### 6. 📄 SPA e Gestão de Vistas
+A navegação entre "Página Inicial", "Estatuto Editorial" e "Contactos" é feita sem recarregar a página. As secções são trocadas de forma instantânea através da manipulação de classes CSS (`.active`) via JavaScript.
+
+### 7. 🎯 Espaços de Destaque e Publicidade
+O layout incorpora áreas estratégicas para monetização e parcerias, incluindo:
+* Um *Card* premium na barra lateral dedicado à **Wintech**, com apelo visual distinto.
+* Um *Banner* inferior em formato standard horizontal (728x90) integrado de forma harmoniosa no *Dark Theme*.
+
+---
+
+## 🛠️ Como Executar o Projeto
+
+Como o projeto é totalmente *Client-Side*, não requer bases de dados nem configurações de servidor complexas.
+
+1. Clone o repositório para o seu ambiente local.
+2. Abra o ficheiro `index.html` em qualquer browser moderno (Chrome, Edge, Firefox, Safari).
+3. (Opcional) Para testes de integração de rede, utilize uma extensão como o *Live Server* do VS Code.
+
+---
+**Desenvolvido por João Fernandes** | Projeto dedicado à região de Setúbal.
