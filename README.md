@@ -1,4 +1,4 @@
-# Sugestão de Título: Portal Rádio Jornal de Setúbal - Mockup SPA Dinâmico
+# Portal Rádio Jornal de Setúbal - Mockup SPA Dinâmico
 
 **Resumo:** Mockup moderno em Dark Mode para a Rádio Jornal de Setúbal, com leitor persistente, grelhas dinâmicas e integração de feeds RSS regionais e de tecnologia.
 
