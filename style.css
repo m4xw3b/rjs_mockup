@@ -140,4 +140,4 @@ input[type="range"] { accent-color: var(--accent-blue); width: 100px; cursor: po
     .internal-page { padding: 20px; }
     .doc-signatures { flex-direction: column; gap: 30px; }
     .footer-content { flex-direction: column; gap: 15px; text-align: center; }
-}
+} 
