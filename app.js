@@ -1,26 +1,38 @@
-// Configurações dos Feeds RSS
+// Configurações dos Feeds RSS (Adicionado 'O Setubalense')
+const OSETUBALENSE_RSS = 'https://osetubalense.com/feed/';
 const WINTECH_RSS = 'https://wintech.pt/?format=feed&type=rss';
 const SETUBAL_RSS = 'https://www.mun-setubal.pt/feed/';
 
-// Função inteligente para extrair imagens do Feed RSS
+// Função inteligente para forçar a extração de imagens
 function extractImageFromContent(item) {
+    // 1. Tenta a thumbnail padrão
     if (item.thumbnail && item.thumbnail !== '') return item.thumbnail;
-    if (item.enclosure && item.enclosure.link) return item.enclosure.link;
     
-    // Procura por tags <img> dentro do conteúdo ou descrição
-    const imgRegex = /<img[^>]+src="([^">]+)"/g;
+    // 2. Tenta nos ficheiros de media associados (enclosure)
+    if (item.enclosure && item.enclosure.link && item.enclosure.type.startsWith('image/')) return item.enclosure.link;
+    
+    // 3. Procura ativamente por tags <img> dentro do código HTML do conteúdo ou descrição
+    const imgRegex = /<img[^>]+src=["']([^"'>]+)["']/i;
     let match = imgRegex.exec(item.content);
     if (!match) match = imgRegex.exec(item.description);
     
     if (match && match[1]) return match[1];
     
-    // Imagem genérica de substituição caso o artigo não tenha imagem
-    return 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+    // 4. Imagens locais de emergência (Fallback) consoante a fonte da notícia
+    if (item.link.includes('mun-setubal')) {
+        // Se a Câmara não mandar imagem, usamos uma foto de Setúbal
+        return 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pra%C3%A7a_de_Bocage_%28Set%C3%BAbal%29.jpg/800px-Pra%C3%A7a_de_Bocage_%28Set%C3%BAbal%29.jpg';
+    } else if (item.link.includes('osetubalense')) {
+        // Imagem genérica para notícias jornalísticas
+        return 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80'; 
+    }
+    
+    // Imagem genérica final de reserva
+    return 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80';
 }
 
-// Função para buscar e processar os feeds para os CARROSSEIS
+// Função para buscar e processar os feeds
 async function fetchRSS(feedUrl, containerId) {
-    // Adicionar cache buster (timestamp) na URL para forçar o bypass do cache antigo
     const cacheBuster = new Date().getTime();
     const finalFeedUrl = `${feedUrl}?cb=${cacheBuster}`;
     const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(finalFeedUrl)}`;
@@ -34,7 +46,6 @@ async function fetchRSS(feedUrl, containerId) {
         if (data.status === 'ok' && data.items.length > 0) {
             container.innerHTML = '';
             
-            // Vai buscar os últimos 6 artigos para o scroll horizontal
             const articles = data.items.slice(0, 6);
             
             articles.forEach(item => {
@@ -62,7 +73,7 @@ async function fetchRSS(feedUrl, containerId) {
                 container.innerHTML += articleHTML;
             });
         } else {
-            container.innerHTML = '<div class="news-card"><div class="news-content"><p>Não foi possível carregar as notícias mais recentes.</p></div></div>';
+            container.innerHTML = '<div class="news-card"><div class="news-content"><p>Não foi possível carregar as notícias.</p></div></div>';
         }
     } catch (error) {
         console.error('Erro ao carregar RSS:', error);
@@ -70,10 +81,10 @@ async function fetchRSS(feedUrl, containerId) {
     }
 }
 
-// Função para popular o TICKER superior com as últimas notícias de Setúbal
+// Ticker do topo (Usa as notícias do Jornal O Setubalense por serem mais regulares)
 async function populateTicker() {
     const cacheBuster = new Date().getTime();
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SETUBAL_RSS + '?cb=' + cacheBuster)}`;
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(OSETUBALENSE_RSS + '?cb=' + cacheBuster)}`;
     const tickerContainer = document.getElementById('news-ticker');
     
     try {
@@ -82,11 +93,9 @@ async function populateTicker() {
         
         if (data.status === 'ok' && data.items.length > 0) {
             let tickerHTML = '';
-            // Coloca os 8 títulos mais recentes no ticker
             data.items.slice(0, 8).forEach(item => {
                 tickerHTML += `<div class="ticker-item"><i class="fas fa-bolt" style="color:var(--secondary); margin-right:5px;"></i> <a href="${item.link}" target="_blank">${item.title}</a></div>`;
             });
-            // Duplica o conteúdo para criar o efeito infinito contínuo no CSS
             tickerContainer.innerHTML = tickerHTML + tickerHTML;
         }
     } catch (error) {
@@ -95,7 +104,6 @@ async function populateTicker() {
     }
 }
 
-// Lógica de Navegação (Single Page)
 function showView(viewId) {
     document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
     document.getElementById(`view-${viewId}`).classList.add('active');
@@ -103,12 +111,10 @@ function showView(viewId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Menu Mobile
 function toggleMenu() {
     document.getElementById('main-nav').classList.toggle('show');
 }
 
-// Lógica do Leitor de Rádio
 const audio = document.getElementById('audioStream');
 const playIcon = document.getElementById('playIcon');
 const volumeSlider = document.getElementById('volumeSlider');
@@ -134,8 +140,9 @@ volumeSlider.addEventListener('input', (e) => {
     audio.volume = e.target.value;
 });
 
-// Arrancar scripts iniciais
+// Inicia as chamadas na ordem correta
 document.addEventListener('DOMContentLoaded', () => {
+    fetchRSS(OSETUBALENSE_RSS, 'regional-news');
     fetchRSS(SETUBAL_RSS, 'setubal-news');
     fetchRSS(WINTECH_RSS, 'wintech-news');
     populateTicker();
