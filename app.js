@@ -155,4 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Lista Lateral (Município - 3 notícias)
     fetchSidebarNews(SETUBAL_RSS, 'setubal-news', 3);
-});
+}); 
