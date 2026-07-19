@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rádio Jornal de Setúbal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" onclick="showView('home')">
+                <i class="fas fa-microphone-alt"></i> Rádio Jornal <span>Setúbal</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <nav id="main-nav">
+                <a href="#" onclick="showView('home')">Início</a>
+                <a href="#" onclick="showView('estatuto')">Estatuto Editorial</a>
+                <a href="#" onclick="showView('contactos')">Contactos</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- VISTA: INÍCIO -->
+    <main id="view-home" class="view-section active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>A Voz e a Notícia da Nossa Região</h1>
+                <p>Acompanhe a emissão em direto enquanto lê as últimas novidades do concelho e do mundo da tecnologia.</p>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <!-- Coluna de Notícias de Setúbal -->
+            <section class="news-column">
+                <h2 class="section-title"><i class="fas fa-city"></i> Notícias de Setúbal</h2>
+                <div id="setubal-news" class="news-feed">
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar atualidade local...</div>
+                </div>
+            </section>
+
+            <!-- Coluna de Notícias Wintech -->
+            <section class="news-column">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Tecnologia</h2>
+                <div id="wintech-news" class="news-feed">
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar atualidade tecnológica...</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Espaço Publicitário -->
+        <section class="ad-section">
+            <div class="ad-banner">
+                <span>Espaço Reservado para Publicidade (728x90)</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- VISTA: ESTATUTO EDITORIAL -->
+    <main id="view-estatuto" class="view-section">
+        <div class="page-content">
+            <h2>Estatuto Editorial</h2>
+            <div class="text-box">
+                <p>A <strong>Rádio Jornal de Setúbal</strong> é um órgão de comunicação social de âmbito regional, pluralista e independente, que tem como objetivo principal informar, formar e entreter a população do distrito de Setúbal.</p>
+                <p>Comprometemo-nos com o rigor, a isenção e a objetividade, respeitando sempre a deontologia profissional e a ética jornalística. A nossa programação musical e informativa procura refletir a identidade cultural, social e desportiva da nossa região.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- VISTA: CONTACTOS -->
+    <main id="view-contactos" class="view-section">
+        <div class="page-content">
+            <h2>Contactos</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Morada</h3>
+                    <p>Praça de Bocage, Setúbal<br>Portugal</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>geral@radiojornalsetubal.pt<br>redacao@radiojornalsetubal.pt</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Telefone</h3>
+                    <p>+351 265 000 000</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- LEITOR DE RÁDIO FIXO -->
+    <div class="radio-player">
+        <div class="player-container">
+            <div class="now-playing">
+                <span class="live-pulse"></span>
+                <div class="stream-info">
+                    <strong>Emissão em Direto</strong>
+                    <span>Rádio Jornal Setúbal</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <audio id="audioStream" src="https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one" preload="none"></audio>
+                <button class="play-btn" id="playBtn" onclick="togglePlay()">
+                    <i class="fas fa-play" id="playIcon"></i>
+                </button>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
