@@ -28,7 +28,6 @@
         <div class="ticker-label">ÚLTIMA HORA</div>
         <div class="ticker-content">
             <div class="ticker" id="news-ticker">
-                <!-- Preenchido pelo JavaScript -->
                 A carregar os destaques mais recentes da região...
             </div>
         </div>
@@ -44,11 +43,19 @@
         </section>
 
         <div class="content-wrapper">
-            <!-- Coluna de Notícias de Setúbal -->
+            <!-- Coluna de Notícias O Setubalense (MAIS ATUALIZADO) -->
             <section class="news-section">
-                <h2 class="section-title"><i class="fas fa-water"></i> Destaques de Setúbal</h2>
+                <h2 class="section-title"><i class="far fa-newspaper"></i> Atualidade Regional (O Setubalense)</h2>
+                <div id="regional-news" class="news-carousel">
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar notícias do distrito...</div>
+                </div>
+            </section>
+
+            <!-- Coluna de Notícias de Setúbal (MUNICÍPIO) -->
+            <section class="news-section">
+                <h2 class="section-title"><i class="fas fa-water"></i> Destaques do Município</h2>
                 <div id="setubal-news" class="news-carousel">
-                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A atualizar informação do município...</div>
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A atualizar informação oficial...</div>
                 </div>
             </section>
 
@@ -61,7 +68,6 @@
             </section>
         </div>
 
-        <!-- Espaço Publicitário -->
         <section class="ad-section">
             <div class="ad-banner">
                 <span>Espaço Reservado para Publicidade (728x90)</span>
