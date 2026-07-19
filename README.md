@@ -8,13 +8,13 @@ Este repositório contém o código-fonte do novo portal web da **Rádio Jornal 
 *Abaixo encontra-se o registo visual da interface anterior do portal:*
 
 > **Nota:** Substituir este texto e a imagem abaixo pelo link da fotografia da versão antiga.
-![Versão Anterior da Rádio](link_para_a_imagem_antiga.jpg)
+![Versão Anterior da Rádio]([link_para_a_imagem_antiga.jpg](https://github.com/m4xw3b/rjs_mockup/blob/main/rjs_original.jpg?raw=true))
 
 ### Nova Versão (Atual)
 *O novo design otimizado, com foco em leitura noturna, dinamismo visual e integração fluida de conteúdos em tempo real:*
 
 > **Nota:** Substituir este texto e a imagem abaixo pelo link da fotografia da nova versão.
-![Nova Versão da Rádio Jornal](link_para_a_imagem_nova.jpg)
+![Nova Versão da Rádio Jornal]([link_para_a_imagem_nova.jpg](https://github.com/m4xw3b/rjs_mockup/blob/main/rjs_mockup1.jpg?raw=true))
 
 ---
 
