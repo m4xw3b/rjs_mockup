@@ -6,7 +6,7 @@
     --text-main: #f0f0f0;
     --text-muted: #aaaaaa;
     --border-dark: #333333;
-}
+} 
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
 
@@ -140,4 +140,4 @@ input[type="range"] { accent-color: var(--accent-blue); width: 100px; cursor: po
     .internal-page { padding: 20px; }
     .doc-signatures { flex-direction: column; gap: 30px; }
     .footer-content { flex-direction: column; gap: 15px; text-align: center; }
-} 
+}
