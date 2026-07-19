@@ -9,154 +9,154 @@
 </head>
 <body>
 
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo" onclick="showView('home')">
-                <i class="fas fa-microphone-alt"></i> Rádio Jornal <span>Setúbal</span>
-            </a>
-            <button class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-            <nav id="main-nav">
-                <a href="#" onclick="showView('home')">Início</a>
-                <a href="#" onclick="showView('estatuto')">Estatuto Editorial</a>
-                <a href="#" onclick="showView('contactos')">Contactos</a>
-            </nav>
+    <div class="site-wrapper">
+        <!-- CABEÇALHO -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <i class="fas fa-chart-bar" style="font-size: 2rem; margin-bottom: 5px;"></i><br>
+                    <h1>RÁDIO JORNAL</h1>
+                    <h2>DE SETÚBAL 88.6 FM</h2>
+                </div>
+                
+                <!-- CAIXA LISTEN LIVE -->
+                <div class="listen-live-box">
+                    <div class="icon-headphone">
+                        <i class="fas fa-headphones-alt"></i>
+                    </div>
+                    <div class="listen-info">
+                        <button class="play-btn" id="playBtn" onclick="togglePlay()">
+                            <i class="fas fa-play" id="playIcon"></i> OUVIR EM DIRETO
+                        </button>
+                        <p>No ar: Emissão Local 88.6 FM</p>
+                        <audio id="audioStream" src="https://sp0.redeaudio.com/8178/stream" preload="none"></audio>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MENU DE NAVEGAÇÃO ESCURO -->
+        <nav class="main-nav">
+            <a href="#" onclick="showView('home')">PÁGINA INICIAL</a>
+            <a href="#" onclick="showView('estatuto')">ESTATUTO EDITORIAL</a>
+            <a href="#" onclick="showView('contactos')">CONTACTOS</a>
+        </nav>
+
+        <div class="content-area">
+            <!-- VISTA: INÍCIO -->
+            <main id="view-home" class="view-section active">
+                
+                <!-- SECÇÃO: NOTÍCIAS PRINCIPAIS -->
+                <div class="section-block">
+                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Notícias e Destaques</h3>
+                    
+                    <div class="news-grid-2col">
+                        <!-- Coluna 1: O Setubalense -->
+                        <div class="news-column">
+                            <h4 class="col-title">Atualidade Regional</h4>
+                            <div id="regional-news" class="news-list">
+                                <p class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar notícias...</p>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 2: Wintech -->
+                        <div class="news-column">
+                            <h4 class="col-title">Tecnologia (Wintech)</h4>
+                            <div id="wintech-news" class="news-list">
+                                <p class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar notícias...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECÇÃO: MUNICÍPIO & PUBLICIDADE -->
+                <div class="section-block">
+                    <div class="news-grid-2col">
+                        <div class="news-column">
+                            <h3 class="section-title"><i class="fas fa-bullseye"></i> Município de Setúbal</h3>
+                            <div id="setubal-news" class="news-list">
+                                <p class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar destaques...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="news-column">
+                            <h3 class="section-title"><i class="fas fa-bullseye"></i> Espaço Publicitário</h3>
+                            <div class="ad-box">
+                                Publicidade<br>300x250
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- VISTA: ESTATUTO EDITORIAL -->
+            <main id="view-estatuto" class="view-section">
+                <div class="section-block">
+                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Estatuto Editorial</h3>
+                    <div class="text-content">
+                        <div class="info-header">
+                            <strong>Rádio Jornal de Setúbal</strong><br>
+                            Av. Dr. António Rodrigues Manito, 58 R/C - A 2901-902 Setúbal<br>
+                            Telefone: 265 573 601 | Fax: 265 573 639 | NIF 503054941<br>
+                            E-mail: gabinete.advogados326@gmail.com
+                        </div>
+                        <br>
+                        <h4>ESTATUTO EDITORIAL DA RÁDIO JORNAL DE SETÚBAL, SOC. DE COMUNICAÇÃO, LDA</h4>
+                        <br>
+                        <ol class="ordered-list">
+                            <li>A Rádio Jornal de Setúbal, é uma Estação Privada de Radiodifusão de âmbito Local, que tem como referências os princípios da Liberdade, Isenção e Pluralismo.</li>
+                            <li>A frequência é 88.6 fm, o tipo generalista e a àrea de cobertura é Setúbal.</li>
+                            <li>Previlegia a Informação Local e Regional, não descurando os grandes acontecimentos Nacionais e Internacionais. O Conteúdo da Informação e Programação respeita, escrupulosamente, o rigor e a máxima objectividade, numa inequívoca subordinação à deontologia da Comunicação Social.</li>
+                            <li>A Informação e Programação reflectem de modo equilibrado as diversas sensibilidades, tendências e movimentos culturais e de opinião, em primeira linha, das populações que serve e, em última análise, da Sociedade Portuguesa. Num caso e noutro, serão assegurados os respeito pela pessoa humana e interesse nacional.</li>
+                            <li>A palavra veiculada contém a imagem de entusiasmo e sedução sensibilizadora de defesa do património Cultural e Ambiental do Local, da Região e do Pais.</li>
+                            <li>Exige-se da Informação o maior cuidado no tratamento e divulgação de temática passível de lançar o pânico ou alarmes injustificáveis, de pôr em risco vidas ou a segurança dos cidadãos, de criar artificialmente climas de violência, de enganar a boa fé do auditório e de fazer perigar as Instituições Democráticas.</li>
+                            <li>Orientando-se pelos princípios estabelecidos na Constituição e demais leis da Republica, aceita responsável e tolerantemente o direito de expressão das minorias, de acordo com a sua representatividade e sempre que isso constitua um imperativo de consciência.</li>
+                            <li>Não dá preferência a qualquer doutrina ou ideologia. É também, independente de todos os poderes políticos, forças profissionais, patronais e sindicais.</li>
+                            <li>Como Empresa que transmite publicidade, sujeita-se às leis de mercado. No entanto, os seus compromissos comerciais não interferem, em rigor, nos princípios deontológicos.</li>
+                            <li>Aceita o direito de resposta a qualquer pessoa, organização ou Instituição que se julgue ofendida pela palavra veiculada, mas sempre nos termos da Lei.</li>
+                            <li>A Informação transmitida distinguirá sempre a notícia da opinião. Quando o facto da actualidade envolve protagonistas com posições diferentes ou contraditórias, não deve ser tratado unilateralmente. Porém, sempre de acordo com os critérios da redacção.</li>
+                            <li>A Informação será orientada pelas normas deontológicas do Estatuto dos Jornalistas. O conselho de Redacção, eleito nos termos da lei, tem assegurado o respeito pelas suas competências.</li>
+                            <li>As normas estabelecidas neste Estatuto Editorial, deverão ser objecto de reflexão, a todo o tempo, pelos Jornalistas para que sejam maximamente respeitadas e seguidas. A sua observância deve constituir preocupação permanente do Conselho de Gerência e da Direcção de Informação.</li>
+                            <li>A Rádio Jornal de Setúbal respeita os direitos dos ouvintes, a ética profissional e os princípios deontológicos dos jornalistas.</li>
+                        </ol>
+                        
+                        <div class="signatures">
+                            <div><strong>O responsável de Programação</strong><br>Luís Gabriel Santos</div>
+                            <div><strong>A responsável de informação</strong><br>Ana Paula Antunes</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- VISTA: CONTACTOS -->
+            <main id="view-contactos" class="view-section">
+                <div class="section-block">
+                    <h3 class="section-title"><i class="fas fa-bullseye"></i> Contactos Oficiais</h3>
+                    <div class="text-content contact-layout">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Centro de Produção</h4>
+                            <p>Av. Dr. António Rodrigues Manito, Nº 58 – R/C A<br>2900-061 Setúbal</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <h4>Telefones</h4>
+                            <p>Geral: (+351) 265 119 947 <small>(custo chamada p/rede fixa nacional)</small></p>
+                            <p>Comercial: (+351) 911 940 292 <small>(custo chamada p/rede móvel nacional)</small></p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email</h4>
+                            <p>gabinete.advogados326@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-    </header>
-
-    <!-- BARRA DE NOTÍCIAS EM SCROLL (TICKER) -->
-    <div class="ticker-wrap">
-        <div class="ticker-label">ÚLTIMA HORA</div>
-        <div class="ticker-content">
-            <div class="ticker" id="news-ticker">
-                A carregar os destaques mais recentes da região...
-            </div>
-        </div>
-    </div>
-
-    <!-- VISTA: INÍCIO -->
-    <main id="view-home" class="view-section active">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>A Voz e a Notícia da Nossa Região</h1>
-                <p>Acompanhe a emissão em direto em 88.6 FM enquanto desliza pelas últimas novidades.</p>
-            </div>
-        </section>
-
-        <div class="content-wrapper">
-            <!-- Coluna de Notícias O Setubalense (MAIS ATUALIZADO) -->
-            <section class="news-section">
-                <h2 class="section-title"><i class="far fa-newspaper"></i> Atualidade Regional (O Setubalense)</h2>
-                <div id="regional-news" class="news-carousel">
-                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar notícias do distrito...</div>
-                </div>
-            </section>
-
-            <!-- Coluna de Notícias de Setúbal (MUNICÍPIO) -->
-            <section class="news-section">
-                <h2 class="section-title"><i class="fas fa-water"></i> Destaques do Município</h2>
-                <div id="setubal-news" class="news-carousel">
-                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A atualizar informação oficial...</div>
-                </div>
-            </section>
-
-            <!-- Coluna de Notícias Wintech -->
-            <section class="news-section">
-                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Mundo da Tecnologia</h2>
-                <div id="wintech-news" class="news-carousel">
-                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> A carregar atualidade tecnológica...</div>
-                </div>
-            </section>
-        </div>
-
-        <section class="ad-section">
-            <div class="ad-banner">
-                <span>Espaço Reservado para Publicidade (728x90)</span>
-            </div>
-        </section>
-    </main>
-
-    <!-- VISTA: ESTATUTO EDITORIAL -->
-    <main id="view-estatuto" class="view-section">
-        <div class="page-content estatuto-content">
-            <h2>Estatuto Editorial</h2>
-            <div class="text-box">
-                <div class="estatuto-header">
-                    <strong>Rádio Jornal de Setúbal</strong><br>
-                    Av. Dr. António Rodrigues Manito, 58 R/C - A 2901-902 Setúbal<br>
-                    Telefone: 265 573 601 | Fax: 265 573 639 | NIF 503054941<br>
-                    E-mail: gabinete.advogados326@gmail.com
-                </div>
-                <h3 style="margin-top: 25px; margin-bottom: 15px; color: var(--primary);">ESTATUTO EDITORIAL DA RÁDIO JORNAL DE SETÚBAL, SOC. DE COMUNICAÇÃO, LDA</h3>
-                <ol class="estatuto-lista">
-                    <li>A Rádio Jornal de Setúbal, é uma Estação Privada de Radiodifusão de âmbito Local, que tem como referências os princípios da Liberdade, Isenção e Pluralismo.</li>
-                    <li>A frequência é 88.6 fm, o tipo generalista e a àrea de cobertura é Setúbal.</li>
-                    <li>Previlegia a Informação Local e Regional, não descurando os grandes acontecimentos Nacionais e Internacionais. O Conteúdo da Informação e Programação respeita, escrupulosamente, o rigor e a máxima objectividade, numa inequívoca subordinação à deontologia da Comunicação Social.</li>
-                    <li>A Informação e Programação reflectem de modo equilibrado as diversas sensibilidades, tendências e movimentos culturais e de opinião, em primeira linha, das populações que serve e, em última análise, da Sociedade Portuguesa. Num caso e noutro, serão assegurados os respeito pela pessoa humana e interesse nacional.</li>
-                    <li>A palavra veiculada contém a imagem de entusiasmo e sedução sensibilizadora de defesa do património Cultural e Ambiental do Local, da Região e do Pais.</li>
-                    <li>Exige-se da Informação o maior cuidado no tratamento e divulgação de temática passível de lançar o pânico ou alarmes injustificáveis, de pôr em risco vidas ou a segurança dos cidadãos, de criar artificialmente climas de violência, de enganar a boa fé do auditório e de fazer perigar as Instituições Democráticas.</li>
-                    <li>Orientando-se pelos princípios estabelecidos na Constituição e demais leis da Republica, aceita responsável e tolerantemente o direito de expressão das minorias, de acordo com a sua representatividade e sempre que isso constitua um imperativo de consciência.</li>
-                    <li>Não dá preferência a qualquer doutrina ou ideologia. É também, independente de todos os poderes políticos, forças profissionais, patronais e sindicais.</li>
-                    <li>Como Empresa que transmite publicidade, sujeita-se às leis de mercado. No entanto, os seus compromissos comerciais não interferem, em rigor, nos princípios deontológicos.</li>
-                    <li>Aceita o direito de resposta a qualquer pessoa, organização ou Instituição que se julgue ofendida pela palavra veiculada, mas sempre nos termos da Lei.</li>
-                    <li>A Informação transmitida distinguirá sempre a notícia da opinião. Quando o facto da actualidade envolve protagonistas com posições diferentes ou contraditórias, não deve ser tratado unilateralmente. Porém, sempre de acordo com os critérios da redacção.</li>
-                    <li>A Informação será orientada pelas normas deontológicas do Estatuto dos Jornalistas. O conselho de Redacção, eleito nos termos da lei, tem assegurado o respeito pelas suas competências.</li>
-                    <li>As normas estabelecidas neste Estatuto Editorial, deverão ser objecto de reflexão, a todo o tempo, pelos Jornalistas para que sejam maximamente respeitadas e seguidas. A sua observância deve constituir preocupação permanente do Conselho de Gerência e da Direcção de Informação.</li>
-                    <li>A Rádio Jornal de Setúbal respeita os direitos dos ouvintes, a ética profissional e os princípios deontológicos dos jornalistas.</li>
-                </ol>
-                <div class="assinaturas">
-                    <div class="assinatura-bloco"><strong>O responsável de Programação</strong><br>Luís Gabriel Santos</div>
-                    <div class="assinatura-bloco"><strong>A responsável de informação</strong><br>Ana Paula Antunes</div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- VISTA: CONTACTOS -->
-    <main id="view-contactos" class="view-section">
-        <div class="page-content">
-            <h2>Contactos</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Centro de Produção</h3>
-                    <p>Av. Dr. António Rodrigues Manito, Nº 58 – R/C A<br>2900-061 Setúbal</p>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-phone"></i>
-                    <h3>Telefones</h3>
-                    <p><strong>Geral:</strong> (+351) 265 119 947<br><small>(custo chamada p/rede fixa nacional)</small></p>
-                    <p style="margin-top: 10px;"><strong>Comercial:</strong> (+351) 911 940 292<br><small>(custo chamada p/rede móvel nacional)</small></p>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>gabinete.advogados326<br>@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- LEITOR DE RÁDIO FIXO -->
-    <div class="radio-player">
-        <div class="player-container">
-            <div class="now-playing">
-                <span class="live-pulse"></span>
-                <div class="stream-info">
-                    <strong>Emissão em Direto</strong>
-                    <span>Rádio Jornal de Setúbal 88.6 FM</span>
-                </div>
-            </div>
-            <div class="controls">
-                <audio id="audioStream" src="https://sp0.redeaudio.com/8178/stream" preload="none"></audio>
-                <button class="play-btn" id="playBtn" onclick="togglePlay()">
-                    <i class="fas fa-play" id="playIcon"></i>
-                </button>
-                <div class="volume-control">
-                    <i class="fas fa-volume-up"></i>
-                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
-                </div>
-            </div>
-        </div>
+        
+        <footer class="site-footer">
+            <p>Rádio Jornal de Setúbal © 2026 | Geral: 265 119 947</p>
+        </footer>
     </div>
 
     <script src="app.js"></script>
